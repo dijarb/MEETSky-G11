@@ -1,4 +1,4 @@
-package com.cydeo.utilities;
+package com.meetsky.utilities;
 
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -302,7 +302,14 @@ for given duration
         }
     }
 
+    public static void waitForElementToDisplay(WebElement element){
+        Driver.timeout(0,"s");
 
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        wait.until(ExpectedConditions.visibilityOf(element));
+
+        Driver.timeout(10,"s");
+    }
     /**
      * Waits for element to be not stale
      *

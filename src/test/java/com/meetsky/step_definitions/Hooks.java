@@ -1,7 +1,5 @@
 package com.meetsky.step_definitions;
 
-import com.meetsky.pages.DashboardPage;
-import com.meetsky.pages.LoginPage;
 import com.meetsky.utilities.ConfigurationReader;
 import com.meetsky.utilities.Driver;
 import io.cucumber.java.After;
@@ -14,7 +12,7 @@ public class Hooks {
 
     @Before
     public void setupScenario(){
-        Driver.getDriver().get(ConfigurationReader.getProperty("env"));
+
     }
     @After
     public void teardownScenario(Scenario scenario){

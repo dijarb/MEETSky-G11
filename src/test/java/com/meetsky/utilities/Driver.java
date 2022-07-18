@@ -1,4 +1,4 @@
-package com.cydeo.utilities;
+package com.meetsky.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
