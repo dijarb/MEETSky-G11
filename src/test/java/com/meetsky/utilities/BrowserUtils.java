@@ -77,7 +77,9 @@ for given duration
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInURL));
     }
 
-
+    public static void verifyUrlStartsWith(String url){
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().startsWith(url));
+    }
     /**
      * This method will accept a dropdown as a WebElement
      * and return all the options' text in a List of String.
@@ -182,6 +184,14 @@ for given duration
     public static void waitFor(int seconds) {
         try {
             Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void waitForMs(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -307,6 +317,24 @@ for given duration
 
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
         wait.until(ExpectedConditions.visibilityOf(element));
+
+        Driver.timeout(10,"s");
+    }
+
+    public static void waitForElementToDisappear(WebElement element){
+        Driver.timeout(0,"s");
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        wait.until(ExpectedConditions.invisibilityOf(element));
+
+        Driver.timeout(10,"s");
+    }
+
+    public static void waitForTitle(String expectedTitle){
+        Driver.timeout(0,"s");
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        wait.until(ExpectedConditions.titleIs(expectedTitle));
 
         Driver.timeout(10,"s");
     }
@@ -487,5 +515,13 @@ for given duration
         new WebDriverWait(Driver.getDriver(), time).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
-
+    public static Boolean webElementExists(String xpath){
+        try{
+            Driver.getDriver().findElement(By.xpath(xpath)).isDisplayed();
+            return true;
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
