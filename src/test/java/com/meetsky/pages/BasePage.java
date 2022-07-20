@@ -69,6 +69,9 @@ public class BasePage {
     @FindBy(xpath = "//li[@data-id='logout']/a")
     public WebElement accountMenuLogoutButton;
 
+    @FindBy(css = ".nav-icon-recent")
+    public WebElement naviconrecentLink;
+
 
     public BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
