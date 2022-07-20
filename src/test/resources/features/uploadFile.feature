@@ -26,3 +26,4 @@ Feature: Upload, move or delete file any selected file under the Files module
         And User click icon arrow or press Enter
 
         Scenario: User can move or copy any selected item to any folder
+          When

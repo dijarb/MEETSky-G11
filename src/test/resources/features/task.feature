@@ -5,7 +5,7 @@ Feature: Creating a new task list or a single task and add any task to completed
     When  User clicks task icon
 
 
-  @joshua
+
   Scenario:Create a new task
     When User clicks add list button
     And User enters name of task
