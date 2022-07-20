@@ -5,6 +5,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class TaskPages extends BasePage{
 
-    @FindBy(id = "nextcloud")
-    public WebElement homePageLink;
+    @FindBy( linkText = "Add List…")
+    public WebElement addListButton;
+
+    @FindBy(id = "newListInput")
+    public WebElement inputText;
+
+
 }
