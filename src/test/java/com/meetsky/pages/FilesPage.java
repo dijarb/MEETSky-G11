@@ -44,8 +44,11 @@ public class FilesPage extends BasePage{
     @FindBy(xpath = "//a[@class='app-sidebar__close icon-close']")
     public WebElement closeButtonInFile;
 
-    @FindBy(id = "fileList")
-    public WebElement fileList;
+    @FindBy(id = "view-toggle")
+    public WebElement viewToggle;
+
+    @FindBy(id = "filestable")
+    public WebElement filesTable;
 
     @FindBy(xpath = "//tbody//tr")
     public List<WebElement> files;
@@ -62,11 +65,8 @@ public class FilesPage extends BasePage{
     @FindBy(xpath = "//a[@class='name sort columntitle']")
     public WebElement nameButton;
 
-    @FindBy(xpath = "//a[@class='name sort columntitle']//span[@class='sort-indicator icon-triangle-n']")
-    public WebElement nameSortIndicator_n;
-
-    @FindBy(xpath = "//a[@class='name sort columntitle']//span[@class='sort-indicator icon-triangle-s']")
-    public WebElement nameSortIndicator_s;
+    @FindBy(xpath = "//a[@class='name sort columntitle']//span[1]")
+    public WebElement nameLabel;
 
     @FindBy(xpath = "//label[@for='select_all_files']")
     public WebElement selectAllButton;
@@ -89,6 +89,12 @@ public class FilesPage extends BasePage{
     @FindBy(xpath = "//tbody[@id='fileList']//td[@class='filesize']")
     public List<WebElement> fileSizes;
 
+    @FindBy(id = "modified")
+    public WebElement modifiedButton;
+
+    @FindBy(xpath = "//tbody[@id='fileList']//span[@class='modified live-relative-timestamp']")
+    public List<WebElement> fileDates;
+
     Faker faker = new Faker();
     Actions actions = new Actions(Driver.getDriver());
 
@@ -99,11 +105,13 @@ public class FilesPage extends BasePage{
             BrowserUtils.clickWithJS(newButton);
             BrowserUtils.waitForElementToDisplay(newFileMenu);
             newFileButton.click();
+            BrowserUtils.waitForElementToDisplay(fileNameInputBox);
             fileNameInputBox.sendKeys(faker.letterify("??????????"));
             actions.sendKeys(Keys.ENTER).perform();
             BrowserUtils.waitForElementToDisplay(contentViewerSidebar);
             actions.sendKeys(Keys.ESCAPE).perform();
             BrowserUtils.waitForTitle("Files - Meetsky - QA");
+            BrowserUtils.waitForMs(500);
 
             count++;
         }
@@ -116,6 +124,7 @@ public class FilesPage extends BasePage{
             BrowserUtils.clickWithJS(newButton);
             BrowserUtils.waitForElementToDisplay(newFileMenu);
             newFolderButton.click();
+            BrowserUtils.waitForElementToDisplay(folderNameInputBox);
             folderNameInputBox.sendKeys(faker.letterify("??????????"));
             actions.sendKeys(Keys.ENTER).perform();
             BrowserUtils.waitForMs(500);
@@ -150,6 +159,15 @@ public class FilesPage extends BasePage{
             String s = file.getText();
             s=s.replaceAll("< |> |( .B)","");
             list.add(Double.parseDouble(s));
+        }
+        return list;
+    }
+
+    public List<Long> fileDatesList(){
+        List<Long> list = new ArrayList<>();
+        for (WebElement file: fileDates) {
+            String s = file.getAttribute("data-timestamp");
+            list.add(Long.parseLong(s));
         }
         return list;
     }

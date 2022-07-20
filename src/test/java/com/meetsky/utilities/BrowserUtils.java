@@ -516,12 +516,15 @@ for given duration
     }
 
     public static Boolean webElementExists(String xpath){
+        Driver.timeout(0,"s");
         try{
             Driver.getDriver().findElement(By.xpath(xpath)).isDisplayed();
             return true;
         }catch (NoSuchElementException e){
             e.printStackTrace();
             return false;
+        }finally {
+            Driver.timeout(10,"s");
         }
     }
 }
