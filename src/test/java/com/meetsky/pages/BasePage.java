@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BasePage {
+public class  BasePage {
 
     @FindBy(id = "nextcloud")
     public WebElement homePageLink;
@@ -68,6 +68,9 @@ public class BasePage {
 
     @FindBy(xpath = "//li[@data-id='logout']/a")
     public WebElement accountMenuLogoutButton;
+
+    @FindBy(css = ".nav-icon-recent")
+    public WebElement naviconrecentLink;
 
 
     public BasePage() {

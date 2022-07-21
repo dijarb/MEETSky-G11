@@ -19,6 +19,7 @@ public class Driver {
     private static Dimension defaultWindowSize;
 
     public static WebDriver getDriver(){
+
         if(driverPool.get() == null){
             String browserType = ConfigurationReader.getProperty("browser");
 
