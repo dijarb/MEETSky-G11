@@ -11,5 +11,5 @@ public class TaskPages extends BasePage{
     @FindBy(id = "newListInput")
     public WebElement inputText;
 
-
+//span[@title='All']
 }

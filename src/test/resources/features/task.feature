@@ -11,4 +11,9 @@ Feature: Creating a new task list or a single task and add any task to completed
     And User enters name of task
     And User press enter
 
+    @abid
+  Scenario:Note a new task
+    When User clicks notes button
+    And User check "Personel" in the notes category
+
 
