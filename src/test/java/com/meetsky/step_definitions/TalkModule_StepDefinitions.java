@@ -1,32 +1,55 @@
 package com.meetsky.step_definitions;
 
 import com.meetsky.pages.LoginPage;
+import com.meetsky.pages.BasePage;
 import com.meetsky.utilities.BrowserUtils;
+import com.meetsky.utilities.Driver;
 import com.sun.jna.Library;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.jsoup.Connection;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TalkModule_StepDefinitions {
     @When("User clicks talk icon on header menu")
     public void user_clicks_talk_icon_on_header_menu() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        BasePage basePage = new BasePage();
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),60);
+        wait.until(ExpectedConditions.visibilityOf(basePage.spreedPageLink));
+        basePage.spreedPageLink.click();
+
+
+
     }
     @When("User clicks plus icon from opened menu on left side of the page")
-    public void user_clicks_plus_icon_from_opened_menu_on_left_side_of_the_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void user_clicks_plus_icon_from_opened_menu_on_left_side_of_the_page() throws InterruptedException {
+        WebElement plusIcon = Driver.getDriver().findElement(By.xpath("//button[@slot='trigger']"));
+        BrowserUtils.waitForClickablility(plusIcon,30);
+        plusIcon.click();
+        BrowserUtils.waitFor(5);
+
+
     }
     @When("User types the group name in input box")
     public void user_types_the_group_name_in_input_box() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        WebElement textField = Driver.getDriver().findElement(By.xpath("//input[@class='conversation-name']"));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),30);
+        wait.until(ExpectedConditions.visibilityOf(textField));
+        textField.sendKeys("Friends");
+
     }
     @When("User clicks Add participants button on the bottom right")
     public void user_clicks_add_participants_button_on_the_bottom_right() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       WebElement addButton = Driver.getDriver().findElement(By.xpath("//button[@class='navigation__button navigation__button-right primary']"));
+        BrowserUtils.waitForClickablility(addButton,30);
+       addButton.click();
+        BrowserUtils.waitFor(3);
+
     }
     @When("User selects any of the contacts in contact list")
     public void user_selects_any_of_the_contacts_in_contact_list() {
