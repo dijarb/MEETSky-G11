@@ -14,8 +14,8 @@ import org.junit.runner.RunWith;
         },
         features = {"src/test/resources/features/contactsModuleFunctionality.feature"},
         glue = {"com/meetsky/step_definitions"},
-        dryRun = true,
-        tags = ""
+        dryRun = false,
+        tags = "@789"
 )
 public class CukesRunner {
 }
