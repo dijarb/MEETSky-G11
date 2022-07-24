@@ -53,8 +53,23 @@ public class TalkModule_StepDefinitions {
     }
     @When("User selects any of the contacts in contact list")
     public void user_selects_any_of_the_contacts_in_contact_list() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       WebElement select1 = Driver.getDriver().findElement(By.xpath("(//span[@class='participant-row__user-name'])[2]"));
+       select1.click();
+        BrowserUtils.waitFor(2);
+
+        WebElement select2 = Driver.getDriver().findElement(By.xpath("(//span[@class='participant-row__user-name'])[3]"));
+        select2.click();
+        BrowserUtils.waitFor(2);
+
+        WebElement select3 = Driver.getDriver().findElement(By.xpath("(//span[@class='participant-row__user-name'])[4]"));
+        select3.click();
+        BrowserUtils.waitFor(2);
+
+        WebElement createButton = Driver.getDriver().findElement(By.xpath("//button[@class='navigation__button navigation__button-right primary']"));
+        createButton.click();
+        BrowserUtils.waitFor(2);
+
+
     }
     @Then("New group conversation is created and displayed with the same name on the top left side")
     public void new_group_conversation_is_created_and_displayed_with_the_same_name_on_the_top_left_side() {
