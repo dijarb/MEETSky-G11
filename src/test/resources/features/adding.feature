@@ -6,11 +6,17 @@ Feature: Add to Favorites/Rename/Comment on File Functionality
     Given User is logged in
     And user is in Files page
 
-    @wip
   Scenario: user can add any file to favorites from its own three dots menu
     When user clicks on three dots button
     And user clicks Add to favorites button
     And user clicks to Favorites
     Then user should see his favorite files in Favorite part
+
+    @wip
+  Scenario: user can rename any file from its own three dots menu
+    When user clicks on three dots button
+    And user clicks Rename button
+    And user enters new name for file
+    Then user should be able to see his changes on file name
 
 
