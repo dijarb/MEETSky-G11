@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features"},
         glue = {"com/meetsky/step_definitions"},
         dryRun = false,
-        tags = "@abid"
+        tags = ""
 )
 public class CukesRunner {
 }
