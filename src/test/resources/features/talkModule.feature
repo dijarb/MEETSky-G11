@@ -24,3 +24,9 @@ Feature: Talk Module Functionality
     And User clicks Add participants button on the bottom right
     And User selects any of the contacts in contact list
     Then New group conversation is created and displayed with the same name on the top left side
+
+  @METSK-511
+    Scenario: User can can see the participants of the conversation on the right-hand menu under Participants
+      When User clicks talk icon on header menu
+      And User clicks group conversation on the left hand side
+      Then User can see the participants on the right-hand menu under Participants

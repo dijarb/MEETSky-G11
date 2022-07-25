@@ -78,9 +78,18 @@ public class TalkModule_StepDefinitions {
 
     @Then("New group conversation is created and displayed with the same name on the top left side")
     public void new_group_conversation_is_created_and_displayed_with_the_same_name_on_the_top_left_side() {
-        WebElement groupName = Driver.getDriver().findElement(By.xpath("//span[contains(text(),'friends')]"));
+        WebElement groupName = Driver.getDriver().findElement(By.xpath("(//div[@class='avatar icon icon-contacts'])[1]"));
 
         Assert.assertTrue(groupName.isDisplayed());
     }
+
+    @When("User clicks group conversation on the left hand side")
+    public void user_clicks_group_conversation_on_the_left_hand_side() {
+
+    }
+    @Then("User can see the participants on the right-hand menu under Participants")
+    public void user_can_see_the_participants_on_the_right_hand_menu_under_participants() {
+
+
 
 }
