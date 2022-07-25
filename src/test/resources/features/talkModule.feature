@@ -16,6 +16,7 @@ Feature: Talk Module Functionality
     Given User is logged in
     And user is in Files page
 
+  @METSK-508
   Scenario: User can create a new group conversation by adding other users
     When User clicks talk icon on header menu
     And User clicks plus icon from opened menu on left side of the page

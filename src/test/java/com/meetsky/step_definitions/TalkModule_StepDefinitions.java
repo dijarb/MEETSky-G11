@@ -78,7 +78,8 @@ public class TalkModule_StepDefinitions {
 
     @Then("New group conversation is created and displayed with the same name on the top left side")
     public void new_group_conversation_is_created_and_displayed_with_the_same_name_on_the_top_left_side() {
-        WebElement groupName = Driver.getDriver().findElement(By.xpath("acli__content__line-one__title"));
+        WebElement groupName = Driver.getDriver().findElement(By.xpath("//span[contains(text(),'friends')]"));
+
         Assert.assertTrue(groupName.isDisplayed());
     }
 
