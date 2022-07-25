@@ -13,6 +13,7 @@ public class DeletedFilesPage extends BasePage{
 
 @FindBy(xpath = "//label[@for='select_all_trash']")
     public WebElement  selectAllCheckBox;
+// here we have a comment
 
 
 }

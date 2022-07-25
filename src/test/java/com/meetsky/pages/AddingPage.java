@@ -17,4 +17,7 @@ public class AddingPage extends BasePage{
     @FindBy(xpath = "//div[@id='app-content-favorites']//tr[@data-file=\"Talk\"]")
     public WebElement seenInFavorites;
 
+    @FindBy(xpath = "//li[@class=' action-rename-container']")
+    public WebElement renameOption;
+
 }
