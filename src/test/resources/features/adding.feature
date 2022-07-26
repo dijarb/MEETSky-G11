@@ -12,11 +12,29 @@ Feature: Add to Favorites/Rename/Comment on File Functionality
     And user clicks to Favorites
     Then user should see his favorite files in Favorite part
 
-    @wip
   Scenario: user can rename any file from its own three dots menu
     When user clicks on three dots button
     And user clicks Rename button
     And user enters new name for file
     Then user should be able to see his changes on file name
+
+  Scenario: user can put some comments on any file from the file details menu opened right side
+    When user clicks on three dots button
+    And user clicks on details button
+    And user chooses comments option in details
+    And user writes some comments in comments option
+    And user clicks the right side arrow
+    Then user should be able to see his comments
+
+    @wip
+  Scenario: user can delete the comments made on any file from the the file details menu opened right side
+    When user clicks on three dots button
+    And user clicks on details button
+    And user chooses comments option in details
+    And user clicks on three dots button related to comment
+    And user clicks on delete comment button
+    Then user should be able to delete the comment
+
+
 
 
