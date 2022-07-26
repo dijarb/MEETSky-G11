@@ -27,4 +27,24 @@ Feature: Contacts Module Functionality
     Then User should see the name of the contact on the page
 
 
+  @METSK-509
+  Scenario: User can see all the contacts as a list inside the middle column and total number of the contacts near the “All Contacts” tab
+    When User clicks the Contacts icon on the header menu
+    And  User ends up in Contacts page
+    And  User should see all the contacts as a list inside of the middle column
+    Then User should see the number of the contacts near the All Contacts tab
+
+  @METSK-510
+  Scenario: User can delete any selected contact
+    When User clicks the Contacts icon on the header menu
+    And  User ends up in Contacts page
+    And  User clicks the contacts name
+    And  User clicks the three dots button on the right side of the page
+    And  User clicks the Delete button on the opened dropdown list
+    Then The contact must be deleted and user shouldn't see it on the contacts page
+
+
+
+
+
 
