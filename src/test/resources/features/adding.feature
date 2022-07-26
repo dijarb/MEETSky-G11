@@ -26,7 +26,6 @@ Feature: Add to Favorites/Rename/Comment on File Functionality
     And user clicks the right side arrow
     Then user should be able to see his comments
 
-    @wip
   Scenario: user can delete the comments made on any file from the the file details menu opened right side
     When user clicks on three dots button
     And user clicks on details button

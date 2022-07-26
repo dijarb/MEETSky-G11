@@ -11,10 +11,10 @@ public class AddingPage extends BasePage{
     @FindBy(xpath = "//li[@class=' action-favorite-container']")
     public WebElement addToFavorites;
 
-    @FindBy(xpath = "//div//li[@class='nav-favorites       ui-droppable collapsible']")
+    @FindBy(xpath = "//a[@class='nav-icon-favorites svg']")
     public WebElement favoritesFile;
 
-    @FindBy(xpath = "//div[@id='app-content-favorites']//tr[@data-file=\"Talk\"]")
+    @FindBy(xpath = "//div[@id='app-content-favorites']//span[.='readme']")
     public WebElement seenInFavorites;
 
     @FindBy(xpath = "//li[@class=' action-rename-container']")

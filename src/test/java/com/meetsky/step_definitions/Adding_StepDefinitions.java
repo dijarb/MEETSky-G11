@@ -83,15 +83,18 @@ public class Adding_StepDefinitions {
     public void user_clicks_on_three_dots_button_related_to_comment() {
         addingPage.threeDotsForComments.click();
     }
+
     @When("user clicks on delete comment button")
     public void user_clicks_on_delete_comment_button() {
         addingPage.deleteComment.click();
     }
+
     @Then("user should be able to delete the comment")
     public void user_should_be_able_to_delete_the_comment() {
-        String actual = addingPage.seenComments.getText();
-        String expected = "";
-        Assert.assertEquals(expected,actual);
-
+        Driver.getDriver().navigate().refresh();
+        addingPage.threeDots.click();
+        addingPage.detailsOption.click();
+        addingPage.commentsTabView.click();
+        Driver.getDriver().findElement(By.xpath("//p[.='No comments yet, start the conversation!']")).isDisplayed();
     }
 }
