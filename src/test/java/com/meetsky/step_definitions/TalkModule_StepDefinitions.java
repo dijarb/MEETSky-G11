@@ -11,11 +11,20 @@ import io.cucumber.java.en.When;
 import org.jsoup.Connection;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
 public class TalkModule_StepDefinitions {
+
+    public String employee1;
     @When("User clicks talk icon on header menu")
     public void user_clicks_talk_icon_on_header_menu() {
 
@@ -86,10 +95,76 @@ public class TalkModule_StepDefinitions {
     @When("User clicks group conversation on the left hand side")
     public void user_clicks_group_conversation_on_the_left_hand_side() {
 
+        WebElement groupName = Driver.getDriver().findElement(By.xpath("(//span[@class='acli__content__line-one__title'])[1]"));
+        groupName.click();
     }
     @Then("User can see the participants on the right-hand menu under Participants")
     public void user_can_see_the_participants_on_the_right_hand_menu_under_participants() {
+        BrowserUtils.waitForVisibility(Driver.getDriver().findElement(By.xpath("//span[contains(text(),'Employee100')]")),3);
+        List<WebElement> participants = Driver.getDriver().findElements(By.className("participant-row__user-name"));
+
+        ArrayList<String> participantsInColumn = new ArrayList<String>();
+
+
+        for (WebElement each : participants) {
+
+            System.out.println(each.getText());
+            participantsInColumn.add(each.getText());
+        }
+        System.out.println(participantsInColumn);
+
+        List<WebElement> addedParticipants = Driver.getDriver().findElements(By.className("user-bubble__title"));
+        ArrayList<String> participantsInChat = new ArrayList<String>();
+        participantsInChat.add("Employee52");
+
+        for (WebElement every : addedParticipants) {
+
+            System.out.println(every.getText());
+
+            participantsInChat.add(every.getText());
+
+        }
+
+        System.out.println(participantsInChat);
+
+        Assert.assertEquals(participantsInColumn, participantsInChat);
+
+
+    }
+
+    @When("User clicks three dots next to participants name")
+    public void user_clicks_three_dots_next_to_participants_name() {
+
+        WebElement participant1 = Driver.getDriver().findElement(By.xpath("//ul[1]/li[4]/div[3]/div[1]/div[1]/button[1]"));
+
+        participant1.click();
+    }
+    @When("User clicks Remove participants button on the opened menu")
+    public void user_clicks_remove_participants_button_on_the_opened_menu() {
+        BrowserUtils.waitForClickablility(By.xpath("//span[@class='participant-row__user-name'][contains(text(),'Employee101')]"),2);
+        WebElement deleteBtn = Driver.getDriver().findElement(By.xpath("//span[@class='action-button__icon icon-delete']"));
+        deleteBtn.click();
+        BrowserUtils.waitFor(5);
+    }
+    @Then("User should not see the removed participants on the list")
+    public void user_should_not_see_the_removed_participants_on_the_list() throws Exception {
+        List<WebElement> partGroup = Driver.getDriver().findElements(By.className("participant-row__user-name"));
+        ArrayList<String> elements = new ArrayList<String>();
+
+
+        for (WebElement each : partGroup) {
+            elements.add(each.getText());
+            System.out.println(each.getText());
+        }
+
+
+        Assert.assertFalse(elements.contains("Employee101"));
+
+        System.out.println(elements.contains("Employee101"));
+        }
+    }
 
 
 
-}
+
+

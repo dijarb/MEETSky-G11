@@ -30,3 +30,10 @@ Feature: Talk Module Functionality
       When User clicks talk icon on header menu
       And User clicks group conversation on the left hand side
       Then User can see the participants on the right-hand menu under Participants
+  @METSK-518
+   Scenario: User can remove any participant from the conversation as being moderator of the conversation
+      When User clicks talk icon on header menu
+      And User clicks group conversation on the left hand side
+      And User clicks three dots next to participants name
+      And User clicks Remove participants button on the opened menu
+     Then User should not see the removed participants on the list

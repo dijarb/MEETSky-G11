@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features/talkModule.feature"},
         glue = {"com/meetsky/step_definitions"},
         dryRun = false,
-        tags = "@METSK-511"
+        tags = "@METSK-518"
 )
 public class CukesRunner {
 }
