@@ -16,6 +16,7 @@ public class TaskStepDefinitions {
     TaskPages taskPages = new TaskPages();
     Faker faker = new Faker();
     String fakeName;
+    String fakeTask;
     @When("User clicks task icon")
     public void user_clicks_task_icon() {
 
@@ -31,7 +32,6 @@ public class TaskStepDefinitions {
         //BrowserUtils.waitFor(5);
         BrowserUtils.waitForElementToDisplay(taskPages.inputText);
         taskPages.inputText.sendKeys(name);
-        System.out.println("name = " + name);
     }
 
     @When("User enters fake name of task")
@@ -40,7 +40,6 @@ public class TaskStepDefinitions {
         BrowserUtils.waitForElementToDisplay(taskPages.inputText);
         fakeName = faker.name().username();
         taskPages.inputText.sendKeys(fakeName);
-        System.out.println("name = " + fakeName);
     }
 
     @When("User press enter")
@@ -56,6 +55,18 @@ public class TaskStepDefinitions {
 
     @Then("Verify that fake name is on the task list")
     public void verify_that_fake_name_is_on_the_task_list() {
+        // new task list is in the taskList
         Assert.assertTrue(taskPages.checkList(taskPages.taskList,fakeName));
+    }
+
+    @When("User enter new task inside the task list")
+    public void user_enter_new_task_inside_the_task_list() {
+        fakeTask =faker.chuckNorris().fact();
+        taskPages.inputTextForTask.sendKeys(fakeTask);
+    }
+    @Then("Verify that new task is on the task list")
+    public void verify_that_new_task_is_on_the_task_list() {
+        // new task is in the taskDetailList
+        Assert.assertTrue(taskPages.checkList(taskPages.taskDetailList,fakeTask));
     }
 }

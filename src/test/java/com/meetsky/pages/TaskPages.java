@@ -13,8 +13,11 @@ public class TaskPages extends BasePage{
     @FindBy(id = "newListInput")
     public WebElement inputText;
 
-    @FindBy(xpath = "//input[@id='newListInput']")
-    public WebElement inputText2;
+    @FindBy(xpath = "//input[@id='target']")
+    public WebElement inputTextForTask;
+
+    @FindBy(xpath = "//div[@class='task-info']/div")
+    public List<WebElement> taskDetailList;
 
     @FindBy (xpath = "//span[@class='app-navigation-entry__title']")
     public List<WebElement> taskList;
@@ -30,5 +33,4 @@ public class TaskPages extends BasePage{
         return false;
     }
 
-//span[@title='All']  newListInput
 }

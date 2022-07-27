@@ -33,6 +33,14 @@ Feature: Checking functionality of  task module.
       | Osman |
       |Mehmet |
 
+    @METSK-517
+    Scenario: User can create a new task
+      When User clicks add list button
+      And User enters fake name of task
+      And User press enter
+      And User enter new task inside the task list
+      And User press enter
+      Then Verify that new task is on the task list
 
 
 
