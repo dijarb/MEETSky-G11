@@ -1,6 +1,7 @@
 package com.meetsky.step_definitions;
 
 import com.meetsky.pages.DeletedFilesPage;
+import com.meetsky.utilities.BrowserUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -25,6 +26,11 @@ public class DeletedFiles_StepDefinition {
 
     @Then("Files are sorted by Name in ascending order")
     public void filesAreSortedByNameInAscendingOrder() {
+
+        if(!BrowserUtils.webElementExists("//a[@class='name sort columntitle']//span[@class='sort-indicator icon-triangle-n']")){
+            BrowserUtils.waitForClickablility(deletedFilesPage.nameButton,10);
+            deletedFilesPage.nameButton.click();
+        }
 
         List<String> actual = deletedFilesPage.deletedFileNamesString();
         List<String> expected = deletedFilesPage.deletedFileNamesString();
