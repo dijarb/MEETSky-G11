@@ -33,7 +33,7 @@ Feature: Checking functionality of  task module.
       | Osman |
       |Mehmet |
 
-    @METSK-517
+    @Jwip
     Scenario: User can create a new task
       When User clicks add list button
       And User enters fake name of task
