@@ -104,5 +104,42 @@ public class ContactsModuleFunctionality_StepDefinition {
 
 
 
+    @When("User chooses and clicks the contacts name")
+    public void user_chooses_and_clicks_the_contacts_name() {
+
+        Driver.getDriver().findElement(By.xpath("//div[contains(text(),'Sebastian Vettel')]")).click();
+    }
+    @When("User clicks the image icon under the first letters of the name or profile picture")
+    public void user_clicks_the_image_icon_under_the_first_letters_of_the_name_or_profile_picture() {
+
+        Driver.getDriver().findElement(By.xpath("//header/div[1]/div[1]/div[2]/div[1]/div[1]/button[1]")).click();
+    }
+    @When("User clicks choose from files button on the opened menu")
+    public void user_clicks_choose_from_files_button_on_the_opened_menu() {
+
+        Driver.getDriver().findElement(By.xpath("//span[contains(text(),'Choose from files')]")).click();
+    }
+    @When("User clicks the file")
+    public void user_clicks_the_file() {
+
+        Driver.getDriver().findElement(By.xpath("//tbody/tr[1]/td[1]/span[1]/span[1]")).click();
+    }
+    @When("User clicks the image and clicks the Choose button")
+    public void user_clicks_the_image_and_clicks_the_choose_button() {
+
+        Driver.getDriver().findElement(By.xpath("//tbody/tr[1]/td[1]")).click();
+        Driver.getDriver().findElement(By.xpath("//button[contains(text(),'Choose')]")).click();
+
+
+    }
+    @Then("User should see the Delete picture button")
+    public void user_should_see_the_delete_picture_button() {
+       boolean isButtonDisplayed = Driver.getDriver().findElement(By.xpath("//span[contains(text(),'Delete picture')]")).isDisplayed();
+
+       Assert.assertTrue(isButtonDisplayed);
+    }
+
+
+
 }
  //
