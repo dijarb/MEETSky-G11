@@ -5,6 +5,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class AddingPage extends BasePage{
 
+    @FindBy(xpath = "//ul[@id='appmenu']//li[@data-id='files']")
+    public WebElement filesButton;
+
     @FindBy(xpath = "//a[@class='action action-menu permanent']")
     public WebElement threeDots;
 
@@ -14,7 +17,7 @@ public class AddingPage extends BasePage{
     @FindBy(xpath = "//a[@class='nav-icon-favorites svg']")
     public WebElement favoritesFile;
 
-    @FindBy(xpath = "//div[@id='app-content-favorites']//span[.='readme']")
+    @FindBy(xpath = "//div[@id='app-content-favorites']//span[.='Talk']")
     public WebElement seenInFavorites;
 
     @FindBy(xpath = "//li[@class=' action-rename-container']")
@@ -23,22 +26,22 @@ public class AddingPage extends BasePage{
     @FindBy(xpath = "//li[@class=' action-details-container']")
     public WebElement detailsOption;
 
-    @FindBy(id = "commentsTabView")
+    @FindBy(id = "comments")
     public WebElement commentsTabView;
 
-    @FindBy(xpath = "//div[@class='message']")
+    @FindBy(xpath = "//div[@role='textbox']")
     public WebElement commentsInput;
 
-    @FindBy(xpath = "//input[@class='submit icon-confirm has-tooltip']")
+    @FindBy(xpath = "//div[@class='comment comments__writer']//input[@type='submit']")
     public WebElement rightSideArrow;
 
-    @FindBy(xpath = "//li[@class='comment']")
+    @FindBy(xpath = "//div[@class='comment__message']")
     public WebElement seenComments;
 
-    @FindBy(xpath = "//a[@class='action more icon icon-more has-tooltip']")
+    @FindBy(xpath = "//div[@class='comment__header']//div[@class='trigger']")
     public WebElement threeDotsForComments;
 
-    @FindBy(xpath = "//a[@class='menuitem action delete permanent']//span[.='Delete comment']")
+    @FindBy(xpath = "//button[@class='action-button focusable']//span[.='Delete comment']")
     public WebElement deleteComment;
 
 }
