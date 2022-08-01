@@ -45,6 +45,18 @@ Feature: Contacts Module Functionality
 
 
 
+    @METSK-512
+  Scenario: User can change the profile picture of any contact with a previously uploaded picture by using “Choose from files” option
+    When User clicks the Contacts icon on the header menu
+    And  User ends up in Contacts page
+    And  User chooses and clicks the contacts name
+    And  User clicks the image icon under the first letters of the name or profile picture
+    And  User clicks choose from files button on the opened menu
+    And  User clicks the file
+    And  User clicks the image and clicks the Choose button
+    And  User clicks the image icon under the first letters of the name or profile picture
+    Then User should see the Delete picture button
+
 
 
 

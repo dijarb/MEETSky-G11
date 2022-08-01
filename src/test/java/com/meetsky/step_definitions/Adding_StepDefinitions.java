@@ -1,6 +1,8 @@
 package com.meetsky.step_definitions;
 
 import com.meetsky.pages.AddingPage;
+import com.meetsky.pages.FilesPage;
+import com.meetsky.utilities.BrowserUtils;
 import com.meetsky.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -48,8 +50,9 @@ public class Adding_StepDefinitions {
 
     @Then("user should be able to see his changes on file name")
     public void user_should_be_able_to_see_his_changes_on_file_name() {
+        BrowserUtils.waitFor(10);
         String actual = (Driver.getDriver().findElement(By.xpath("//tbody[@id='fileList']//span[@class='innernametext'][1]"))).getText();
-        String expected = "Test1";
+        String expected = "Test2";
         Assert.assertEquals(expected,actual);
     }
 
@@ -91,10 +94,39 @@ public class Adding_StepDefinitions {
 
     @Then("user should be able to delete the comment")
     public void user_should_be_able_to_delete_the_comment() {
-        Driver.getDriver().navigate().refresh();
-        addingPage.threeDots.click();
-        addingPage.detailsOption.click();
-        addingPage.commentsTabView.click();
-        Driver.getDriver().findElement(By.xpath("//p[.='No comments yet, start the conversation!']")).isDisplayed();
+        Driver.getDriver().findElement(By.xpath("//div[@class='toastify on dialogs toast-undo toastify-right toastify-top']")).isDisplayed();
+    }
+
+    @And("user enters {string} for file")
+    public void userEntersForFile(String newItem) {
+        Actions actions = new Actions (Driver.getDriver());
+        actions.sendKeys(newItem + Keys.ENTER).perform();
+    }
+
+    @Then("user should be able to see his changes on file {string}")
+    public void userShouldBeAbleToSeeHisChangesOnFile(String newItem2) {
+        BrowserUtils.waitFor(10);
+        String actual = (Driver.getDriver().findElement(By.xpath("//tbody[@id='fileList']//span[@class='innernametext'][1]"))).getText();
+        String expected = newItem2;
+        Assert.assertEquals(expected,actual);
+    }
+
+    @When("user is on dashboard page")
+    public void userIsOnDashboardPage() {
+        String actual = Driver.getDriver().getTitle();
+        String expected = "Dashboard - QA - Meetsky";
+        Assert.assertEquals(expected,actual);
+    }
+
+    @And("user click Files button")
+    public void userClickFilesButton() {
+        addingPage.filesButton.click();
+    }
+
+    @Then("user should be able to be in Files page")
+    public void userShouldBeAbleToBeInFilesPage() {
+        String actual = Driver.getDriver().getTitle();
+        String expected = "Files - QA - Meetsky";
+        Assert.assertEquals(expected,actual);
     }
 }
