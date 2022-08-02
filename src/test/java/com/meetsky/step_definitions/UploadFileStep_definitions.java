@@ -6,22 +6,35 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import java.util.List;
 
 public class UploadFileStep_definitions {
 
     FilesPage filesPage = new FilesPage();
 
 
-    @When("user clicks plus icon on the file page")
-    public void user_clicks_plus_icon_on_the_file_page() {
+    @When("user click the File icon on the main menu")
+    public void userClickTheFileIconOnTheHeaderMenu() {
+
         Driver.getDriver().findElements(By.xpath("//header/div[1]/ul[1]/li[2]/a[1]"));
-        filesPage.iconSpan.click();
+
+    }
+
+
+    @Then("user clicks plus icon on the file page")
+    public void user_clicks_plus_icon_on_the_file_page() {
+
+        Assert.assertEquals(Driver.getDriver().getTitle(),"Files - Meetsky - QA");
     }
 
     @Then("user choose the file from desktop")
     public void user_choose_the_file_from_desktop() {
         filesPage.newButton.click();
+
     }
 
     @Then("user upload the file")
@@ -87,4 +100,6 @@ public class UploadFileStep_definitions {
     @And("user can see the total number of files and folders under the files list table")
     public void userCanSeeTheTotalNumberOfFilesAndFoldersUnderTheFilesListTable() {
     }
+
+
 }
