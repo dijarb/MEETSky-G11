@@ -7,12 +7,17 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class FilesPage extends BasePage{
+
+    public FilesPage(){
+        PageFactory.initElements(Driver.getDriver(),this);
+    }
 
     @FindBy(xpath = "//a[@class='button new']")
     public WebElement newButton;
@@ -97,6 +102,9 @@ public class FilesPage extends BasePage{
 
     Faker faker = new Faker();
     Actions actions = new Actions(Driver.getDriver());
+
+    @FindBy(css = ".icon-add")
+    public WebElement iconSpan;
 
     public void addFiles(int num){
         int count=0;
