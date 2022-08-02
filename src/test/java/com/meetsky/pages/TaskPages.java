@@ -74,7 +74,9 @@ public class TaskPages extends BasePage{
         BrowserUtils.waitForClickablility(accountMenuSettingsButton,10);
         accountMenuSettingsButton.click();
         BrowserUtils.waitFor(5);
+
         Select dropdown = new Select(dropdownSettingLanguageButton);
+
         dropdown.selectByValue("en");
         BrowserUtils.waitFor(5);
         homePageLink.click();
