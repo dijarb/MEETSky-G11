@@ -12,7 +12,7 @@ public class DeletedFilesPage extends BasePage{
 
 
 // here we have a comment
-@FindBy(linkText = "Deleted files")
+@FindBy(xpath = "//a[starts-with(@class,'nav-icon-trashbin')]")
 public WebElement deletedFilesButton;
 
     @FindBy(xpath = "//label[@for='select_all_trash']")
@@ -21,8 +21,11 @@ public WebElement deletedFilesButton;
     @FindBy (id = "select_all_trash")
     public WebElement selectAllTrash;
 
-    @FindBy (xpath = "(//div[@id='headerName-container'])[11]")
+    @FindBy (xpath = "(//div[@id='headerName-container']/a)[11]")
     public WebElement nameButton;
+
+    @FindBy (linkText = "Deleted")
+    public WebElement deletedButtonForSort;
 
     @FindBy (xpath = "(//th[@id='headerDate'])[11]")
     public WebElement dateButton;
