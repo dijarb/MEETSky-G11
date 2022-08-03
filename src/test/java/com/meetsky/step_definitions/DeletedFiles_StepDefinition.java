@@ -14,7 +14,13 @@ public class DeletedFiles_StepDefinition {
 
     @Given("User clicks Deleted Files Button")
     public void user_clicks_deleted_files_button() {
-  deletedFilesPage.deletedFilesButton.click();
+        BrowserUtils.waitFor(5);
+        if (!deletedFilesPage.welcomeText.getText().startsWith("Good")) {
+            deletedFilesPage.setUpLanguage();
+        }
+        deletedFilesPage.filesPageLink.click();
+        BrowserUtils.waitFor(5);
+        deletedFilesPage.deletedFilesButton.click();
     }
 
 
@@ -27,7 +33,7 @@ public class DeletedFiles_StepDefinition {
     @Then("Files are sorted by Name in ascending order")
     public void filesAreSortedByNameInAscendingOrder() {
 
-        if(!BrowserUtils.webElementExists("//a[@class='name sort columntitle']//span[@class='sort-indicator icon-triangle-n']")){
+        if(!BrowserUtils.webElementExists("(//*[@id=\"headerName-container\"]/a/span[@class='sort-indicator hidden icon-triangle-n'])[1]")){
             BrowserUtils.waitForClickablility(deletedFilesPage.nameButton,10);
             deletedFilesPage.nameButton.click();
         }
@@ -39,6 +45,17 @@ public class DeletedFiles_StepDefinition {
         Assert.assertEquals(actual,expected);
     }
 
+    @When("User clicks deleted button")
+    public void user_clicks_deleted_button() {
+        BrowserUtils.waitFor(3);
+        deletedFilesPage.deletedButtonForSort.click();
+    }
+    @Then("File are sorted by Date in ascending order")
+    public void file_are_sorted_by_date_in_ascending_order() {
+
+
+
+    }
 
 }
 

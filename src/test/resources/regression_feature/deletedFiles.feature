@@ -9,8 +9,3 @@ Feature: DeletedFile
     When User clicks Name button
     Then Files are sorted by Name in ascending order
 
-    @sortByDate
-    Scenario: User can order the all deleted files by newest to oldest or visa versa
-      When User clicks deleted button
-      Then File are sorted by Date in ascending order
-

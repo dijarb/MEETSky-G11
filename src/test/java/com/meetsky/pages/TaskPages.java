@@ -18,8 +18,7 @@ public class TaskPages extends BasePage{
 
     // //img[@src='/index.php/avatar/Employee62/32?v=0']
 
-    @FindBy(xpath = "//select[@id='language']")
-    public WebElement dropdownSettingLanguageButton;
+
 
     @FindBy( linkText = "Add List…")
     public WebElement addListButton;
@@ -68,18 +67,5 @@ public class TaskPages extends BasePage{
         return false;
     }
 
-    public void setUpLanguage(){
-        topRightSettingsExpandButton.click();
-        BrowserUtils.waitFor(5);
-        BrowserUtils.waitForClickablility(accountMenuSettingsButton,10);
-        accountMenuSettingsButton.click();
-        BrowserUtils.waitFor(5);
 
-        Select dropdown = new Select(dropdownSettingLanguageButton);
-
-        dropdown.selectByValue("en");
-        BrowserUtils.waitFor(5);
-        homePageLink.click();
-        Driver.getDriver().navigate().refresh();
-    }
 }

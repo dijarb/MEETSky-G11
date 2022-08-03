@@ -38,6 +38,7 @@ public class LoginPage {
 
     public void login(){
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+        BrowserUtils.waitFor(5);
         usernameBox.sendKeys(ConfigurationReader.getProperty("username"));
         passwordBox.sendKeys(ConfigurationReader.getProperty("password"));
         new Actions(Driver.getDriver()).sendKeys(Keys.ENTER).perform();
