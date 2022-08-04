@@ -20,7 +20,7 @@ public class UploadFileStep_definitions {
     @When("user click the File icon on the main menu")
     public void userClickTheFileIconOnTheHeaderMenu() {
 
-        Driver.getDriver().findElements(By.xpath("//header/div[1]/ul[1]/li[2]/a[1]"));
+        filesPage.filesPageLink.click();
 
     }
 
