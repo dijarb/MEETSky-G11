@@ -32,8 +32,7 @@ public class DeletedFiles_StepDefinition {
 
     @Then("Files are sorted by Name in ascending order")
     public void filesAreSortedByNameInAscendingOrder() {
-
-        if(!BrowserUtils.webElementExists("(//*[@id=\"headerName-container\"]/a/span[@class='sort-indicator hidden icon-triangle-n'])[1]")){
+        if(!BrowserUtils.webElementExists("(//a[@class='name sort columntitle']/span[@class='sort-indicator icon-triangle-n'])[2]")){
             BrowserUtils.waitForClickablility(deletedFilesPage.nameButton,10);
             deletedFilesPage.nameButton.click();
         }
